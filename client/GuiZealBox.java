@@ -35,7 +35,7 @@ public class GuiZealBox extends GuiContainer {
 		//String title = "POWER:";
 		//fontRenderer.drawString(title, 60, 6, 0x404040);
 		
-		String dynpower=String.valueOf(zealbank.getEnergyStored());
+		String dynpower=String.valueOf(zealbank.doGetEnergyStored());
 		fontRenderer.drawString(dynpower, 80, 6, 0x404040);
 
 	}
