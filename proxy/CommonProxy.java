@@ -3,6 +3,8 @@ package cinderous.testlab.proxy;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class CommonProxy {
 	
@@ -28,6 +30,11 @@ public void sendToPlayers(Packet packet, World world, int x, int y, int z, int m
 			}
 		}
 	}
+}
+
+public void registerServerTickHandler()
+{
+ TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 }
 
 }

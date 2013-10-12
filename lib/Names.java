@@ -17,4 +17,9 @@ public class Names {
 	public static final String zealboxUnlocal = "zealboxUnlocal";
 	public static final String zealboxLocal = "zealboxLocal";
 	
+	//items
+	
+	public static final String itempowerUnlocal = "itempowerUnlocal";
+	public static final String itempowerLocal = "itempowerLocal";
+	
 }

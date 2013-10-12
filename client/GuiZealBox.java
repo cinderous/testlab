@@ -29,12 +29,13 @@ public class GuiZealBox extends GuiContainer {
 		
 	}
 	
+	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
 		//String title = "POWER:";
 		//fontRenderer.drawString(title, 60, 6, 0x404040);
 		
-		String dynpower=String.valueOf(zealbank.doGetEnergyStored());
+		String dynpower=String.valueOf(zealbank.getEnergyStored());
 		fontRenderer.drawString(dynpower, 80, 6, 0x404040);
 
 	}
@@ -44,6 +45,10 @@ public class GuiZealBox extends GuiContainer {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+	}
+	
+	public void updateScreen() {
+	 System.out.println("TEST" + zealbank.getEnergyStored());
 	}
 
 }

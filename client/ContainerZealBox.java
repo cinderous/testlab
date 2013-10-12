@@ -11,8 +11,8 @@ import cinderous.testlab.zeal.TileZealBox;
 public class ContainerZealBox extends Container {
 	private TileZealBox zealbox;
 	
-	public ContainerZealBox(InventoryPlayer invPlayer, TileZealBox entity) {
-		this.zealbox = entity;
+	public ContainerZealBox(InventoryPlayer invPlayer, TileZealBox tentity) {
+		this.zealbox = tentity;
 		for(int x = 0; x < 9; x++) {
 			  this.addSlotToContainer(new Slot(invPlayer, x, 8 + x * 18, 142));
 			}
@@ -23,7 +23,7 @@ public class ContainerZealBox extends Container {
 			}
 		for(int y = 0; y < 3; y++) {
 			  for(int x = 0; x < 3; x++) {
-			        addSlotToContainer(new Slot(entity, x + y * 3, 62 + x * 18, 17 + y * 18));
+			        addSlotToContainer(new Slot(tentity, x + y * 3, 62 + x * 18, 17 + y * 18));
 			  }
 			}
 	}

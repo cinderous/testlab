@@ -4,6 +4,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cinderous.testlab.block.Blocks;
+import cinderous.testlab.crystalline.Items;
 import cinderous.testlab.network.GuiHandler;
 import cinderous.testlab.network.PacketHandlerCore;
 import cinderous.testlab.proxy.CommonProxy;
@@ -46,6 +47,7 @@ public static void preInit(FMLPreInitializationEvent event) {
 public static void init(FMLInitializationEvent event) {
 proxy.initRenderers();
 proxy.initSounds();
+proxy.registerServerTickHandler();
 
 LanguageRegistry.instance().addStringLocalization("itemGroup.tabCustom", "en_US", "My Custom Tab");
 
@@ -55,6 +57,8 @@ Blocks.init();
 Blocks.registerBlocks();
 Blocks.addNames();
 Blocks.registerTileEntities();
+Items.init();
+Items.registerItems();
 }
 
 @EventHandler

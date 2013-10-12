@@ -1,10 +1,17 @@
 package cinderous.testlab.zeal;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
+import cinderous.testlab.network.PacketHandlerCore;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.gates.IAction;
@@ -28,7 +35,7 @@ public class TileZealBox extends TileZeal implements IPowerReceptor, IMachine, I
 	}
 
 	private void initPowerProvider() {
-		powerHandler.configure(50, 150, 25, 1000);
+		powerHandler.configure(50, 150, 25, 999999);
 		powerHandler.configurePowerPerdition(1, 1);
 	}
 	
@@ -54,6 +61,8 @@ public class TileZealBox extends TileZeal implements IPowerReceptor, IMachine, I
 
 	    boolean requiresClientSync = false;
 	    storedEnergy = powerHandler.getEnergyStored();
+	    System.out.println(this.storedEnergy);
+	    
 
 	    // Update if our power has changed by more than 0.5%
 	    requiresClientSync |= lastSyncPowerStored != storedEnergy && worldObj.getTotalWorldTime() % 21 == 0;
@@ -67,8 +76,12 @@ public class TileZealBox extends TileZeal implements IPowerReceptor, IMachine, I
 	      worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	      onInventoryChanged();
 	    }
-
+	    
+	
 	  }
+	 public float getEnergyStored() {
+		    return this.doGetEnergyStored();
+		  }
 	
 	 public float doGetEnergyStored() {
 		    return storedEnergy;
@@ -233,5 +246,21 @@ public class TileZealBox extends TileZeal implements IPowerReceptor, IMachine, I
 	        }
 	  }
 	}
+	
+	
+	
+	
+	//packet
+	
+	  @Override
+	  public Packet getDescriptionPacket() {
+		  return PacketHandlerCore.energyPacket(this);
+	  }
+
+//	@Override
+//	public boolean canEmitPowerFrom(ForgeDirection side) {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
 	
 }
